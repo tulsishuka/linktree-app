@@ -1,19 +1,21 @@
 "use client"
 
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState, Suspense } from "react";
+
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
 
 
-const Sign = () => {
+const SignContent = () => {
    const { data: session } = useSession()
   const router = useRouter()
  const searchParams = useSearchParams();
-  const [handle, setHandle] = useState("");
+ const [handle, setHandle] = useState("");
 const [email, setemail] = useState(" ")
 
 
@@ -53,8 +55,8 @@ const [email, setemail] = useState(" ")
    const result = await r.json()
    if(result.success){ 
      toast.success(result.message)
-    //  setemail("")
-    //   // router.push("/home");
+     setemail("")
+      router.push("/home");
     }
     else{
       toast.error(result.message)
@@ -151,9 +153,17 @@ const [email, setemail] = useState(" ")
 <div className=''>
    <Image src="/images/image.png" alt="image" width={400} height={400} className='w-full h-screen object-cover' />
 </div>
+  <ToastContainer />
     </section>
    </main>
   )
 }
 
-export default Sign
+// export default Sign
+export default function Sign() {
+  return (
+    <Suspense fallback={<div>Loading signup...</div>}>
+      <SignContent />
+    </Suspense>
+  );
+}

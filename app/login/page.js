@@ -11,7 +11,6 @@ const Login = () => {
     const { data: session } = useSession()
   const router = useRouter()
 const [email, setemail] = useState("")
-  const [message, setMessage] = useState("");
 
 
 useEffect(() => {
@@ -143,3 +142,4 @@ useEffect(() => {
   }
 
 export default Login
+
