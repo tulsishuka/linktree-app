@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useState, Suspense } from "react";
-
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,12 +10,14 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
 
 
-const SignContent = () => {
+const SignupContent = () => {
    const { data: session } = useSession()
   const router = useRouter()
  const searchParams = useSearchParams();
+   const token = searchParams.get("token");
+
  const [handle, setHandle] = useState("");
-const [email, setemail] = useState(" ")
+const [email, setemail] = useState("")
 
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const [email, setemail] = useState(" ")
       redirect: "follow"
     };
 
-   const r = await fetch("http://localhost:3000/api/add", requestOptions)
+   const r = await fetch(`/api/add`, requestOptions)
    const result = await r.json()
    if(result.success){ 
      toast.success(result.message)
@@ -69,6 +70,7 @@ const [email, setemail] = useState(" ")
   return (
  
    <main className='flex bg-white '>
+     {token && <p>Token: {token}</p>}
     <section className='w-1/2 mx-auto '>
     <div className="">
 <div>    
@@ -160,10 +162,11 @@ const [email, setemail] = useState(" ")
 }
 
 // export default Sign
-export default function Sign() {
+
+export default function Signup() {
   return (
-    <Suspense fallback={<div>Loading signup...</div>}>
-      <SignContent />
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignupContent />
     </Suspense>
   );
 }
