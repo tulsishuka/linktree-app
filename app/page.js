@@ -14,7 +14,7 @@ const router = useRouter()
   
   const createTree = () => { 
     
-    router.push(`/signup?handle=${username}`)
+    router.push(`/Signup?handle=${username}`)
   }
   return (
 
