@@ -2,7 +2,6 @@
 "use client"
 import React from 'react'
 import { useState } from "react";
-import { Suspense } from "react";
 
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
@@ -14,7 +13,7 @@ const router = useRouter()
   
   const createTree = () => { 
     
-    router.push(`/signup?handle=${username}`)
+    router.push(`/Signup?handle=${username}`)
   }
   return (
 
