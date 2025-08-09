@@ -32,15 +32,16 @@ const [email, setemail] = useState(" ")
     }
   }, [session, router])
 
-
-  
-
-    const submitLinks = async () => {
+ const submitLinks = async () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const raw = JSON.stringify({email});
+
+    const raw = JSON.stringify({
+     "email":email
+    });
 
     console.log(raw)
+
     const requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -51,15 +52,18 @@ const [email, setemail] = useState(" ")
    const r = await fetch("http://localhost:3000/api/add", requestOptions)
    const result = await r.json()
    if(result.success){ 
-    router.push('/home')
-   
-     
-    }    
-
-    else {
-      alert(data.message)
+     toast.success(result.message)
+    //  setemail("")
+    //   // router.push("/home");
     }
+    else{
+      toast.error(result.message)
+    }
+
   }
+  
+
+  
   return (
  
    <main className='flex bg-white '>
@@ -80,10 +84,10 @@ const [email, setemail] = useState(" ")
            
             <div className=""></div>
         
-              <form className='flex flex-col gap-3 items-center justify-center' >
+              <div className='flex flex-col gap-3 items-center justify-center' >
               <input value={email} onChange={e=>{setemail(e.target.value)}}  type="email" placeholder='Email' className='border bg-[#f6f7f5] rounded-md p-3 w-[30vw]' />
             <button onClick={()=>{submitLinks()}} className='bg-[#1e2330] text-white hover:bg-zinc-700 p-3 w-[30vw] rounded-md font-bold'>Continue</button>
-          </form>
+          </div>
              </div>
              <div className='items-center justify-content text-sm  text-center flex flex-col gap-5 mt-3'>
                              <p className='text-zinc-500 font-semibold w-[30vw] text-center'>By clicking Create account, you agree to Linktree privacy notice, T&Cs and to receive offers, news and updates.</p>

@@ -1,10 +1,14 @@
 import clientPromise from "@/lib/mongodb"
+
+
 export async function POST(request) {
     const body = await request.json()
-    const client = await clientPromise;
-    const db = client.db("linktree")
-    const collection = db.collection("app")
 
+    const client = await clientPromise;
+    const db = client.db("bittree")
+    const collection = db.collection("links")
+
+    // If the handle is already claimed, you cannot create the bittree
     const doc = await collection.findOne({email: body.email})
 
     if (doc){

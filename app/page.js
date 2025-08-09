@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-    const [username, setUsername] = useState("");
+    const [user, setuser] = useState("");
 const router = useRouter()
 
   
@@ -38,10 +38,7 @@ const router = useRouter()
           <input
             type="text"
             className="pl-[85px] pr-4 py-3  w-full border border-zinc-900 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-white"
-            placeholder=""
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+            placeholder="" value={user} onChange={(e) => setuser(e.target.value)}/>
         </div>
         <button className="bg-[#e9c0e9] px-12 py-5  rounded-full font-bold text-black/90" onClick={()=> createTree()}>
           Claim your Linktree

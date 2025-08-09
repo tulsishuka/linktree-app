@@ -10,13 +10,18 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "lucide-react": "^0.525.0",
+    "mongodb": "^6.18.0",
     "mongoose": "^8.16.4",
     "next": "15.4.1",
     "next-auth": "^4.24.11",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-router-dom": "^7.7.0"
+    "react-router-dom": "^7.7.0",
+    "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
