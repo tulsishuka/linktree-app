@@ -7,9 +7,17 @@ import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-    const [username, setuser] = useState("");
-const router = useRouter()
+//     const [username, setuser] = useState("");
+// const router = useRouter()
 
+//   const createTree = () => { 
+    
+//     router.push(`/signup?handle=${username}`)
+//   }
+
+     const [username, setuser] = useState("");
+const router = useRouter()
+  
   const createTree = () => { 
     
     router.push(`/signup?handle=${username}`)
