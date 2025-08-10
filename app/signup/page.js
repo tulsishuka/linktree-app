@@ -11,19 +11,22 @@ import { useRouter } from 'next/navigation'
 
 
 const SignupContent = () => {
-   const { data: session } = useSession()
+
+     const { data: session } = useSession()
   const router = useRouter()
  const searchParams = useSearchParams();
    const token = searchParams.get("token");
  const [username, setuser] = useState("");
  const [email, setemail] = useState("");
 
+   
 useEffect(() => {
     const handleParam = searchParams.get("handle");
     if (handleParam) {
       setuser(handleParam);
     }
   }, [searchParams]);
+
 
 
   useEffect(() => {
@@ -81,7 +84,8 @@ useEffect(() => {
         </div>
         <div className='flex flex-col'>
             <div className="flex flex-col gap-3 justify-center items-center">
-                <h1 className='text-5xl font-bold'> Claim<strong>@{handle} on</strong> </h1>
+              <h1 className='text-5xl font-bold'> Claim<strong>@{username} on</strong> </h1> 
+
                 <h1 className='text-5xl font-bold'>Linktree today</h1>
                 <p className='text-zinc-700'>Sign up for free!</p>
            
