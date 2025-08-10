@@ -10,10 +10,9 @@ const Page = () => {
     const [username, setuser] = useState("");
 const router = useRouter()
 
-  
   const createTree = () => { 
     
-    router.push(`/Signup?handle=${username}`)
+    router.push(`/signup?handle=${username}`)
   }
   return (
 
