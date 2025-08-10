@@ -15,17 +15,16 @@ const SignupContent = () => {
   const router = useRouter()
  const searchParams = useSearchParams();
    const token = searchParams.get("token");
+ const [username, setuser] = useState("");
+ const [email, setemail] = useState("");
 
- const [handle, setHandle] = useState("");
-const [email, setemail] = useState("")
-
-
-  useEffect(() => {
-    const param = searchParams.get("handle");
-    if (param) {
-      setHandle(param);
+useEffect(() => {
+    const handleParam = searchParams.get("handle");
+    if (handleParam) {
+      setuser(handleParam);
     }
   }, [searchParams]);
+
 
   useEffect(() => {
     
